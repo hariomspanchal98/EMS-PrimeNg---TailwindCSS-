@@ -8,4 +8,16 @@ import { Component, signal } from '@angular/core';
 })
 export class App {
   protected readonly title = signal('ems');
+  visible = true;
+
+  showDialog(){
+    this.visible = true;
+  }
+
+  toggleDarkMode() {
+    const element = document.querySelector('html');
+    if (element) {
+      element.classList.toggle('my-app-dark');
+    }
+  }
 }
