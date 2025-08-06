@@ -4,19 +4,19 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
+import { Home } from './common/home/home';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Home
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DialogModule,
     ButtonModule
   ],
   providers: [

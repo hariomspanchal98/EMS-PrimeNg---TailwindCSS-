@@ -1,0 +1,14 @@
+/* .container {
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* horizontal */
+  /*align-items: center;*/     /* vertical */
+/*}
+ */
+
+.container {
+  border-radius: 12px;
+  background-image: radial-gradient(circle at left top,
+      var(--p-primary-400),
+      var(--p-primary-700));
+}
