@@ -1,0 +1,52 @@
+<p-dialog [(visible)]="visible">
+  <ng-template #headless>
+
+    <div class="flex flex-col px-8 py-8 gap-2 rounded-2xl container" [formGroup]="registrationForm">
+      <span class="p-text-secondary block mb-8 mx-auto">Add your information.</span>
+      <div class="flex items-center gap-4 mb-4">
+        <label for="name" class="font-semibold w-20">Name</label>
+        <input pInputText id="name" class="flex-auto" placeholder="Enter full name" autocomplete="off"
+          formControlName="name" />
+          <label for="username" class="font-semibold">Username</label>
+          <input pInputText id="username" class="flex-auto" placeholder="Enter username" autocomplete="off"
+            formControlName="username" />
+      </div>
+      <div class="flex items-center gap-4 mb-4">
+        <label for="email" class="font-semibold w-20">Email</label>
+        <input pInputText id="email" class="flex-auto" placeholder="Enter a valid email address" autocomplete="off"
+          formControlName="email" />
+      </div>
+      <div class="flex items-center gap-4 mb-4">
+        <label class="font-semibold w-20">Department</label>
+        <div class="flex justify-center department">
+          <p-select [options]="departments" [editable]="true" optionLabel="name" [(ngModel)]="department"
+            [ngModelOptions]="{standalone: true}" placeholder="Select a Department" class="w-full" />
+        </div>
+      </div>
+      <div class="flex items-center gap-4 mb-4">
+        <label class="font-semibold w-24">Country</label>
+        <div class="flex justify-center department">
+          <p-select [options]="countries" [editable]="true" [(ngModel)]="country" optionLabel="name"
+            [ngModelOptions]="{standalone: true}" placeholder="Select Country" class="w-full" />
+        </div>
+      </div>
+      <div class="flex items-center gap-4 mb-4">
+        <label for="password" class="font-semibold w-20">Password</label>
+        <input pInputText id="password" type="password" class="flex-auto" placeholder="Enter Password" autocomplete="off"
+          [(ngModel)]="password" [ngModelOptions]="{standalone: true}"/>
+          <label for="confirmPassword" class="font-semibold w-36">Confirm Password</label>
+        <input pInputText id="confirmPassword" type="password" class="flex-auto" placeholder="Confirm Password" autocomplete="off"
+          [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}"/>
+      </div>
+      <div *ngIf="password != confirmPassword">
+        <span>not</span>
+      </div>
+      <div class="flex justify-around gap-2">
+        <a routerLink="/login" pButton>
+          <span pButtonLabel>Login</span>
+        </a>
+        <p-button label="Register" (click)="register()" />
+      </div>
+    </div>
+  </ng-template>
+</p-dialog>
