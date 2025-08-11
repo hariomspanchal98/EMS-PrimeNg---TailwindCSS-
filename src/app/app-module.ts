@@ -7,13 +7,11 @@ import { App } from './app';
 import { ButtonModule } from 'primeng/button';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
-import { Home } from './common/home/home';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     App,
-    Home
   ],
   imports: [
     BrowserModule,

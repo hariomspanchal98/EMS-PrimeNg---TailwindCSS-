@@ -5,7 +5,7 @@
       <span class="p-text-secondary block mb-8 mx-auto">Add your information.</span>
       <div class="flex items-center gap-4 mb-4">
         <label for="name" class="font-semibold w-20">Name</label>
-        <input pInputText id="name" class="flex-auto" placeholder="Enter full name" autocomplete="off"
+        <input pInputText id="name" [class.is-invalid]="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched" class="flex-auto" placeholder="Enter full name" autocomplete="off"
           formControlName="name" />
           <label for="username" class="font-semibold">Username</label>
           <input pInputText id="username" class="flex-auto" placeholder="Enter username" autocomplete="off"
@@ -38,14 +38,17 @@
         <input pInputText id="confirmPassword" type="password" class="flex-auto" placeholder="Confirm Password" autocomplete="off"
           [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}"/>
       </div>
-      <div *ngIf="password != confirmPassword">
-        <span>not</span>
+      @if (password != confirmPassword && password !='' && confirmPassword !='') {
+        <span>not if</span>
+      }
+      <div *ngIf="password != confirmPassword && password !='' && confirmPassword!=''" class="flex items-center gap-4 mb-4">
+        <span>not div</span>
       </div>
       <div class="flex justify-around gap-2">
         <a routerLink="/login" pButton>
           <span pButtonLabel>Login</span>
         </a>
-        <p-button label="Register" (click)="register()" />
+        <p-button label="Register" (click)="register()" [disabled]="password != confirmPassword"></p-button>
       </div>
     </div>
   </ng-template>

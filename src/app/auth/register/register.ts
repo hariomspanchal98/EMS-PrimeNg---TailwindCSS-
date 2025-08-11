@@ -46,8 +46,14 @@ export class Register implements OnInit {
   }
   register() {
     console.log(this.countries);
+    this.registrationForm.value.password = this.password;
     this.registrationForm.value.country = this.country.name;
     this.registrationForm.value.department = this.department.name;
     console.log('register', this.registrationForm.value.department, this.registrationForm.value);
+    this.registrationForm.reset();
+    this.password = '';
+    this.country = '';
+    this.department = '';
+    this.confirmPassword ='';
   }
 }
