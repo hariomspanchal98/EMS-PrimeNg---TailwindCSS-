@@ -50,10 +50,22 @@ export class Register implements OnInit {
     this.registrationForm.value.country = this.country.name;
     this.registrationForm.value.department = this.department.name;
     console.log('register', this.registrationForm.value.department, this.registrationForm.value);
+    this.setLocalStorage();
     this.registrationForm.reset();
     this.password = '';
     this.country = '';
     this.department = '';
     this.confirmPassword ='';
+  }
+
+  setLocalStorage(){
+    if(localStorage.getItem('users')){
+      const users:[] = JSON.parse(JSON.stringify(localStorage.getItem('users')));
+      users.push(this.registrationForm.value);
+      console.log('if');
+    } else {
+      localStorage.setItem('users', JSON.stringify([this.registrationForm.value]));
+      console.log('else');
+    }
   }
 }
