@@ -7,3 +7,13 @@ export const DEPARTMENTS = [
 { name: 'Operations', code: 'OP' },
 { name: 'Customer Services', code: 'CS' },
 ];
+
+export interface user {
+  name: string;
+  email: string;
+  department: string;
+  password: string;
+  country: string;
+  role: string;
+  username: string
+}

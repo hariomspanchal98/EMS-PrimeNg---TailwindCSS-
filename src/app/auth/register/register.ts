@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DEPARTMENTS } from '../auth.constant';
+import { DEPARTMENTS, user } from '../auth.constant';
 import { Auth } from '../services/auth';
 import { elementAt } from 'rxjs';
 
@@ -15,17 +15,17 @@ export class Register implements OnInit {
   countries: any = [];
   departments = DEPARTMENTS;
   registrationForm: any;
-  country:any;
-  department:any;
-  password:any;
-  confirmPassword:any;
+  country: any;
+  department: any;
+  password: any;
+  confirmPassword: any;
 
   constructor(private authService: Auth) { }
 
   ngOnInit(): void {
     this.authService.getCountries().subscribe({
       next: (data) => {
-        data.forEach((ele:any) => this.countries.push({name :ele?.name?.common}));
+        data.forEach((ele: any) => this.countries.push({ name: ele?.name?.common }));
       },
       error: (err) => {
         console.error('API error:', err);
@@ -55,13 +55,15 @@ export class Register implements OnInit {
     this.password = '';
     this.country = '';
     this.department = '';
-    this.confirmPassword ='';
+    this.confirmPassword = '';
   }
 
-  setLocalStorage(){
-    if(localStorage.getItem('users')){
-      const users:[] = JSON.parse(JSON.stringify(localStorage.getItem('users')));
+  setLocalStorage() {
+    if (localStorage.getItem('users')) {
+      let users = JSON.parse(localStorage.getItem('users')!); // parse the array from storage
+      console.log('cl', users);
       users.push(this.registrationForm.value);
+      localStorage.setItem('users', JSON.stringify(users)); // save back
       console.log('if');
     } else {
       localStorage.setItem('users', JSON.stringify([this.registrationForm.value]));
